@@ -2,12 +2,13 @@ import { AppWebsocket } from "@holochain/conductor-api";
 import { Binding } from "./AppDefaultSettings";
 import "./AppDefaultSettings";
 
-declare global {
-  interface Window {
-    Buffer: any;
-  }
-}
-global.Buffer = global.Buffer || require("buffer").Buffer;
+//declare global {
+ // interface Window {
+ //   Buffer: any;
+ // }
+//}
+
+//global.Buffer = global.Buffer || require("buffer").Buffer;
 export class HcConnect {
   private static instance: AppWebsocket;
   private static async getInstance(): Promise<AppWebsocket> {
