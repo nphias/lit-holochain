@@ -39,9 +39,12 @@ export class Home extends BaseContent {
   }
 
   who_am_i(): Promise<string> {
+    //return new Promise(resolve => {resolve("none")})
     return HcConnect.callZome("who_am_i_2", null);
   }
+
   am_i_developer(): Promise<boolean> {
+    //return new Promise(resolve => {resolve(true)})
     return HcConnect.callZome("am_i_developer", null);
   }
 }

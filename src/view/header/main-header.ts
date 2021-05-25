@@ -1,6 +1,7 @@
 import { html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 import { BaseComponent } from "../BaseComponent";
+
 @customElement("main-header")
 export class MainHeader extends BaseComponent {
   constructor() {
