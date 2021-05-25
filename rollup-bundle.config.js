@@ -6,7 +6,7 @@ import { terser } from 'rollup-plugin-terser';
 
 export default {
   input: `src/index.ts`,
-  output: [{ dir: 'out-tsc/src', format: 'es', sourcemap: true }],
+  output: [{ dir: 'bundle', format: 'es', sourcemap: true }],
   // Indicate here external modules you don't wanna include in your bundle (i.e.: 'lodash-es')
   external: [],
   plugins: [
@@ -14,7 +14,7 @@ export default {
       'process.env.NODE_ENV': '"production"',
     }),
     typescript({
-      outDir: 'out-tsc/src',
+      outDir: 'bundle',
     }),
     resolve(),
     commonjs({ include: [] }),
