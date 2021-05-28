@@ -14,7 +14,7 @@ class PageHeader extends BaseComponent {
       <div class="page-title">
         <div class="row">
           <div class="col-12 col-md-6 order-md-1 order-last">
-            <h1 id="header">Holochain in Action (PeerShare)</h1>
+            <h1 id="header">Holochain starter</h1>
             <!-- <p class="text-subtitle text-muted">
             Multiple form layout you can use
           </p> -->

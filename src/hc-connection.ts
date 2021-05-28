@@ -1,14 +1,7 @@
 import { AppWebsocket } from "@holochain/conductor-api";
-import { Binding } from "./AppDefaultSettings";
+import { Binding, DNASettings } from "./AppDefaultSettings";
 import "./AppDefaultSettings";
 
-//declare global {
- // interface Window {
- //   Buffer: any;
- // }
-//}
-
-//global.Buffer = global.Buffer || require("buffer").Buffer;
 export class HcConnect {
   private static instance: AppWebsocket;
   private static async getInstance(): Promise<AppWebsocket> {
@@ -18,21 +11,27 @@ export class HcConnect {
     }
     return this.instance;
   }
+
   public static async callZome(fnName: string, payload: any): Promise<any> {
     const appConnection = await HcConnect.getInstance();
     const appInfo = await appConnection.appInfo({
-      installed_app_id: "peershare-app",
+      installed_app_id: DNASettings.app_id
     });
 
     const cellId = appInfo.cell_data[0].cell_id;
     //console.log("cellId:", cellId);
-    return await appConnection.callZome({
-      cap: null,
-      cell_id: cellId,
-      zome_name: "peershare",
-      fn_name: fnName,
-      provenance: cellId[1],
-      payload: payload,
-    });
+    try{ 
+      return await appConnection.callZome({
+        cap: null,
+        cell_id: cellId,
+        zome_name: DNASettings.zome,
+        fn_name: fnName,
+        provenance: cellId[1],
+        payload: payload,
+      });
+    }catch(e){
+      console.error(e)
+      //TODO.. handle various connection errors here 
+    }
   }
 }

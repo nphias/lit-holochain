@@ -14,9 +14,6 @@ export class Home extends BaseContent {
   @state()
   private my_address: Promise<string> = this.who_am_i();
 
-  @state()
-  private my_role: Promise<boolean> = this.am_i_developer();
-
   render_me(): unknown {
     return html`
       <div class="col-xl-12 col-md-12 col-sm-12">
@@ -28,9 +25,6 @@ export class Home extends BaseContent {
               <br />
               This is my agent-address:
               ${until(this.my_address, html`<span>Loading...</span>`)}
-              <br />
-              Am I Developer:
-              ${until(this.my_role, html`<span>Loading...</span>`)}
             </div>
           </div>
         </div>
@@ -40,11 +34,7 @@ export class Home extends BaseContent {
 
   who_am_i(): Promise<string> {
     //return new Promise(resolve => {resolve("none")})
-    return HcConnect.callZome("who_am_i_2", null);
+    return HcConnect.callZome("who_am_i", null);
   }
 
-  am_i_developer(): Promise<boolean> {
-    //return new Promise(resolve => {resolve(true)})
-    return HcConnect.callZome("am_i_developer", null);
-  }
 }

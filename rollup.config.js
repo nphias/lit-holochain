@@ -3,8 +3,8 @@ import merge from "deepmerge";
 import { createSpaConfig } from "@open-wc/building-rollup";
 import typescript from "@rollup/plugin-typescript";
 import commonjs from "@rollup/plugin-commonjs";
-import replace from "@rollup/plugin-replace";
 import copy from "rollup-plugin-copy-assets";
+//import replace from '@rollup/plugin-replace';
 
 // use createBasicConfig to do regular JS to JS bundling
 // import { createBasicConfig } from '@open-wc/building-rollup';
@@ -37,11 +37,11 @@ export default merge(baseConfig, {
   // optionally set a HTML template manually
   // input: './app.js',
   plugins: [
-    replace({
-      "process.env.NODE_ENV": '"production"',
-      "process.env.GH_PAGES": `"${!!process.env.GH_PAGES}"`,
-    }),
+    //replace({preventAssignment: true}),
     typescript({ experimentalDecorators: true }),
+    copy({
+      assets: ["src/assets"]
+    }),
     commonjs({
       include: [
         "node_modules/base64-js/**/*",

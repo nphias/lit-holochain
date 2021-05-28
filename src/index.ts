@@ -1,14 +1,10 @@
 import { LitElement, html } from 'lit'
 import { customElement } from "lit/decorators.js";
-//import './tailwind.css'
-//import './components/top-bar'
-//import './components/page-router'
-
 import "./view/header/page-header";
 import "./view/header/main-header";
 import "./view/header/right-header";
 import "./view/navigation/sidebar-navi";
-//import "./router";
+import "./router";
 import "./view/content/home"
 import { Store } from "./AppState";
 
@@ -24,16 +20,21 @@ class App extends LitElement {
   createRenderRoot() {
     return this
   }
+
+  // <div class='container mx-auto my-8 p-6 bg-white rounded-lg shadow-lg'>
   render() {
     return html`
-      <page-header></page-header>
-      <main-header></main-header>
-      <right-header></right-header>
-      <sidebar-navi></sidebar-navi>
-      <div class='container mx-auto my-8 p-6 bg-white rounded-lg shadow-lg'>
-      <app-home></app-home>
-        <page-router></page-router>
+    <div id="app">
+    <sidebar-navi></sidebar-navi>
+    <div id="main">
+      <div class="page-heading">
+        <page-header>
+          <!-- <right-header></right-header> -->
+        </page-header>
+        <main id="content"></main>
       </div>
+    </div>
+    </div>
     `
   }
 }

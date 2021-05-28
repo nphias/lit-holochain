@@ -13,7 +13,7 @@ export class MainHeader extends BaseComponent {
         <a href="#" class="burger-btn d-block d-xl-none">
           <i class="bi bi-justify fs-3"></i>
         </a>
-        <h1 id="header">Holochain in Action</h1>
+        <h1 id="header">Holochain</h1>
       </header>
       <style>
         h1#header {
