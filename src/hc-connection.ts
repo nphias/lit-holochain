@@ -13,14 +13,15 @@ export class HcConnect {
   }
 
   public static async callZome(fnName: string, payload: any): Promise<any> {
+    try{ 
     const appConnection = await HcConnect.getInstance();
     const appInfo = await appConnection.appInfo({
       installed_app_id: DNASettings.app_id
     });
 
     const cellId = appInfo.cell_data[0].cell_id;
-    //console.log("cellId:", cellId);
-    try{ 
+    console.log("cellId:", cellId);
+    
       return await appConnection.callZome({
         cap: null,
         cell_id: cellId,

@@ -20,7 +20,7 @@ class SidebarNavi extends BaseComponent {
           <div class="sidebar-header">
             <div class="d-flex justify-content-between">
               <div class="logo">
-                <a href="index.html"
+                <a href="/"
                   ><img src="assets/images/logo/logo.png" alt="Logo" srcset=""
                 /></a>
               </div>
